@@ -1,0 +1,14 @@
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/temp
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/temp.deps.json
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/temp.runtimeconfig.json
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/temp.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/temp.pdb
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.AssemblyInfoInputs.cache
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.AssemblyInfo.cs
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.csproj.CoreCompileInputs.cache
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.dll
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/refint/temp.dll
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.pdb
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.genruntimeconfig.cache
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/ref/temp.dll
