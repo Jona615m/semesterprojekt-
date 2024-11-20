@@ -7,14 +7,13 @@ using temp;
 class Program {
 
   public static string PlayerName = "";
-  static int points = 100;
   static ZuulShopGame.PlayerShop shop = new ZuulShopGame.PlayerShop();
   static ZuulShopGame.Player player = new ZuulShopGame.Player(Point);
   static DateTime startTime = DateTime.Now; // betyder vores start tid begynder fra vores tid og så har man 5 min
   private static TimeSpan duration = TimeSpan.FromMinutes(5);
   public static int Point { get; set; }
   
-  public static void Main (string[] args)
+  public void Main (string[] args)
   {
     WelcomeUser();
         World world = new World();
@@ -105,6 +104,10 @@ class Program {
                         Util.TypeEffect($"You have to find the shop, before you can buy items");
                     }
                  //forsøger at købe items
+                }
+                else if (command == "highscore")
+                {
+                    Highscore.DisplayHighscores();
                 }
                 
                 else
