@@ -12,3 +12,4 @@
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.pdb
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.genruntimeconfig.cache
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/ref/temp.dll
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.sourcelink.json

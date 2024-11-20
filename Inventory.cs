@@ -34,7 +34,7 @@ public class Inventory
     
 
     // Tilføjer et object til dit inventory
-    public static void AddItem(GameObject item)
+    public static void AddObject(GameObject item)
     {
         inventory.Add(item);
         Util.TypeEffect($"Added {item.name} to your inventory.");

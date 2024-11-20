@@ -2,6 +2,7 @@
  */
 
 using System.Drawing;
+using System.Runtime.InteropServices.JavaScript;
 using temp;
 class Program {
 
@@ -9,32 +10,34 @@ class Program {
   static int points = 100;
   static ZuulShopGame.PlayerShop shop = new ZuulShopGame.PlayerShop();
   static ZuulShopGame.Player player = new ZuulShopGame.Player(Point);
-
+  static DateTime startTime = DateTime.Now; // betyder vores start tid begynder fra vores tid og så har man 5 min
+  private static TimeSpan duration = TimeSpan.FromMinutes(5);
   public static int Point { get; set; }
   
   public static void Main (string[] args)
   {
     WelcomeUser();
-    /*InitRegistry();*/
-        // Initialize the world and starting location
         World world = new World();
-        Space currentSpace = world.GetEntry(); // Set currentSpace to entry point
-
-        // Inventory for storing picked up items
-        // Inventory inventory = new Inventory();
+        Space currentSpace = world.GetEntry(); // Set currentSpace til start lokation
         
         while (true)
         
         {
             Util.TypeEffect($"\nYou are at the {currentSpace.GetName()}.");
             currentSpace.ShowExits();
-            //currentSpace.ShowObjects();
-            //Console.Write("\n pick up [object], inventory, exit): ");
             string input = Console.ReadLine()?.ToLower();
             string[] inputParts = input?.Split(' ') ?? Array.Empty<string>();
 
             if (input == "exit") break;
-
+            if (DateTime.Now - startTime > duration)
+            {
+                Util.TypeEffect("\nTime i up!");
+                break;
+            }
+            
+            TimeSpan remainingTime = duration - (DateTime.Now - startTime);
+            Console.WriteLine($"\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
+            
             if (inputParts.Length > 0)
             {
                 string command = inputParts[0];
@@ -53,14 +56,13 @@ class Program {
                 {
                     //string objectName = input.Substring("pick up ".Length);
                     GameObject? obj = currentSpace.PickUpObject();
-
                     if (obj == null)
                     {
-                        Console.WriteLine("Theres nothing to pick up");
+                        Util.TypeEffect("Theres nothing to pick up");
                     }
                     else
                     {
-                        Inventory.AddItem(obj);
+                        Inventory.AddObject(obj);
                         Util.TypeEffect("You picked up: " + obj.name + " and added it to your inventory.");
                         player.Point += 100;
                     }
@@ -69,7 +71,7 @@ class Program {
                 }
                 else if (command == "inventory")
                 {
-                    Inventory.ShowInventory(); //Display the inventory
+                    Inventory.ShowInventory(); //Display inventory
                     player.DisplayInventory(); //Display player inventory
                 }
                 else if (command == "help")
@@ -104,11 +106,7 @@ class Program {
                     }
                  //forsøger at købe items
                 }
-                /*else if (command == "sell" && inputParts.Length > 1)
-                {
-                    string itemName = input.Substring("sell ".Length);
-                    shop.SellItem(itemName, player); //forsøger at sælge items
-                }*/
+                
                 else
                 {
                     Util.TypeEffect("Invalid command.");
@@ -117,7 +115,7 @@ class Program {
         }
         
 
-        Util.TypeEffect("Goodbye! Thanks for playing! \nYour total score is {points} points.");
+        Util.TypeEffect($"Goodbye! Thanks for playing! \nYour total score is {player.Point} points.");
     }
   static void WelcomeUser() {
       Util.TypeEffect("Hello my friend! welcome to the park, can you please enter your name?");
