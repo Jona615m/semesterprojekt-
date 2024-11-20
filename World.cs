@@ -11,7 +11,7 @@ class World {
     Space forest      = new Space("forest");
     Space playground  = new Space("playground");
     Space recycle     = new Space("recycle");
-    Space ShopRoom = new Space("shop") { HasShop = true };
+    Space Shop = new Space("shop") { HasShop = true };
     
     gate.AddEdge("path", path);
 
@@ -23,15 +23,17 @@ class World {
     picnic.AddEdge("recycle", recycle);
 
     forest.AddEdge("picnic", picnic);
-    forest.AddEdge("shop", ShopRoom);
+    forest.AddEdge("shop", Shop);
     //forest.AddObject();
     
     playground.AddEdge("picnic", picnic);
 
     recycle.AddEdge("picnic", picnic);
+    recycle.AddEdge("shop", Shop);
     
+    Shop.AddEdge("forest", forest);
+    Shop.AddEdge("recycle", recycle);
     
-    ShopRoom.AddEdge("forest", forest);
     this.gate = gate;
     
   }

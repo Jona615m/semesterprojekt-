@@ -3,20 +3,15 @@ namespace temp;
 public class Highscore
 {
     //Her bliver der fundet vej til txt filen fundet i mappen woz
-    private const string HighScoreFile = @"C:/Users/jonasolesen/Desktop/woz/Highscore/HighScores.txt";
-    private static List<(string PlayerName, int Point)> HighScores;
+    private const string HighScoreFile = "/Users/jonasolesen/Desktop/woz/Highscore/HighScores.txt";
+    private static List<(string PlayerName, int Point)> HighScores = LoadHighScores();
 
     //laver en Highscore metode, der gør at HighScores bliver gemt i LoadHighScores
-    public Highscore()
-    {
-        HighScores = LoadHighScores();
-    }
-    
     public static void AddScore(string PlayerName, int Point)
     {
         HighScores.Add((PlayerName, Point));
         HighScores = HighScores.OrderByDescending(x => x.Point).Take(10).ToList();
-        //OrderByDescending - gør at cores bliver lavet at højeste score står først og ned til 10'ende
+        //OrderByDescending - gør at scores bliver lavet at højeste score står først og ned til 10'ende
         //Take(10), gør det er top 10
         SaveHighScores();
     }
@@ -37,18 +32,16 @@ public class Highscore
             return new List<(string name, int point)>(); //Hvis filen ikke eksisterer, så returnerer den en tom liste
 
         var lines = File.ReadAllLines(HighScoreFile);
-        return lines
-            .Select(line =>
+        return lines.Select(line =>
             {
                 //var gør at den analyserer om det er en int, string osv.
-                var parts = line.Split(',');
+                var parts = line.Split(" : ");
                 return (PlayerName: parts[0], Score: int.Parse(parts[1]));
             }).ToList();
         //parts [0] er spillernavnet
         //parts [1] er scoren
         //int.parse, laver scoren om til et heltal
     }
-    
     //File.WriteAllLines, gør at den gemmer i vores txt fil og den kalder tilbage til "HighScoreFile"
     public static void SaveHighScores()
     {
