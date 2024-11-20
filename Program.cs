@@ -10,10 +10,10 @@ class Program {
   static ZuulShopGame.PlayerShop shop = new ZuulShopGame.PlayerShop();
   static ZuulShopGame.Player player = new ZuulShopGame.Player(Point);
   static DateTime startTime = DateTime.Now; // betyder vores start tid begynder fra vores tid og så har man 5 min
-  private static TimeSpan duration = TimeSpan.FromMinutes(5);
+  private static TimeSpan duration = TimeSpan.FromMinutes(1);
   public static int Point { get; set; }
   
-  public void Main (string[] args)
+  public static void Main (string[] args)
   {
     WelcomeUser();
         World world = new World();
@@ -116,8 +116,7 @@ class Program {
                 }
             }
         }
-        
-
+      
         Util.TypeEffect($"Goodbye! Thanks for playing! \nYour total score is {player.Point} points.");
     }
   static void WelcomeUser() {
