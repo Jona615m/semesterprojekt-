@@ -3,7 +3,7 @@ namespace temp;
 public class Highscore
 {
     //Her bliver der fundet vej til txt filen fundet i mappen woz
-    private const string HighScoreFile = @"C:/Users/jonasolesen/Desktop/woz/HighScores.txt";
+    private const string HighScoreFile = @"C:/Users/jonasolesen/Desktop/woz/Highscore/HighScores.txt";
     private static List<(string PlayerName, int Point)> HighScores;
 
     //laver en Highscore metode, der gør at HighScores bliver gemt i LoadHighScores

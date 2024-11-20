@@ -10,7 +10,7 @@ class Program {
   static ZuulShopGame.PlayerShop shop = new ZuulShopGame.PlayerShop();
   static ZuulShopGame.Player player = new ZuulShopGame.Player(Point);
   static DateTime startTime = DateTime.Now; // betyder vores start tid begynder fra vores tid og så har man 5 min
-  private static TimeSpan duration = TimeSpan.FromMinutes(1);
+  private static TimeSpan duration = TimeSpan.FromMinutes(0.2);
   public static int Point { get; set; }
   
   public static void Main (string[] args)
