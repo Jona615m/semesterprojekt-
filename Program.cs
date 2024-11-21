@@ -116,7 +116,7 @@ class Program {
                 }
             }
         }
-        Highscore.AddScore(PlayerName, Point);
+        Highscore.AddScore(PlayerName, player.Point);
         Util.TypeEffect($"Goodbye! Thanks for playing! \nYour total score is {player.Point} points.");
     }
   static void WelcomeUser() {
