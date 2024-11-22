@@ -2,44 +2,44 @@
  */
 
 class World {
-  public Space gate { get; }
+  public Space Haven { get; }
   
   public World () {
-    Space gate       = new Space("gate");
-    Space path        = new Space("path");
-    Space picnic      = new Space("picnic");
-    Space forest      = new Space("forest");
-    Space playground  = new Space("playground");
-    Space recycle     = new Space("recycle");
+    Space Haven       = new Space("haven");
+    Space Nexus        = new Space("nexus");
+    Space Hub      = new Space("hub");
+    Space Core      = new Space("core");
+    Space Farm  = new Space("farm");
+    Space Recycle    = new Space("station") { HasDrop = true} ;
     Space Shop = new Space("shop") { HasShop = true };
     
-    gate.AddEdge("path", path);
+    Haven.AddEdge("nexus", Nexus);
 
-    path.AddEdge("picnic", picnic);
+    Nexus.AddEdge("hub", Hub);
     //path.AddObject();
     
-    picnic.AddEdge("forest", forest);
-    picnic.AddEdge("playground", playground);
-    picnic.AddEdge("recycle", recycle);
+    Hub.AddEdge("core", Core);
+    Hub.AddEdge("playground", Farm);
+    Hub.AddEdge("station", Recycle);
 
-    forest.AddEdge("picnic", picnic);
-    forest.AddEdge("shop", Shop);
+    Core.AddEdge("hub", Hub);
+    Core.AddEdge("shop", Shop);
     //forest.AddObject();
     
-    playground.AddEdge("picnic", picnic);
+    Farm.AddEdge("hub", Hub);
 
-    recycle.AddEdge("picnic", picnic);
-    recycle.AddEdge("shop", Shop);
+    Recycle.AddEdge("hub", Hub);
+    Recycle.AddEdge("shop", Shop);
     
-    Shop.AddEdge("forest", forest);
-    Shop.AddEdge("recycle", recycle);
+    Shop.AddEdge("core", Core);
+    Shop.AddEdge("station", Recycle);
     
-    this.gate = gate;
+    this.Haven = Haven;
     
   }
   
   public Space GetEntry () {
-    return gate;
+    return Haven;
   }
 
 

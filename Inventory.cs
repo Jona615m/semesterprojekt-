@@ -41,7 +41,7 @@ public class Inventory
     }
     
     //Fjerner et object fra dit inventory ved hjælp af navn
-    public bool RemoveItem(string itemName)
+    public static bool RemoveItem(string itemName)
     {
         GameObject? item = inventory.Find(i => i.name.Equals(itemName, StringComparison.OrdinalIgnoreCase));
         if (item != null)

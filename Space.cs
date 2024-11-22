@@ -11,6 +11,7 @@ class Space : Node
   }
 
   public bool HasShop { get; set; }
+  public bool HasDrop { get; set; }
 //indikerer vi har en shop et sted 
   public void Welcome () {
     

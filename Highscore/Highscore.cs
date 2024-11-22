@@ -10,7 +10,7 @@ public class Highscore
     public static void AddScore(string PlayerName, int Point)
     {
         HighScores.Add((PlayerName, Point));
-        HighScores = HighScores.OrderByDescending(x => x.Point).Take(10).ToList();
+        HighScores = HighScores.OrderByDescending(x => x.Point).Take(3).ToList();
         //OrderByDescending - gør at scores bliver lavet at højeste score står først og ned til 10'ende
         //Take(10), gør det er top 10
         SaveHighScores();
@@ -19,7 +19,7 @@ public class Highscore
     public static void DisplayHighscores()
     //Display highscore gør at vi kan kalde den inde i main og vi kan få fremvist den 
     {
-        Util.TypeEffect("Top 10 highscores are");
+        Util.TypeEffect("Top 3 highscores are");
         foreach (var ( PlayerName, Point) in HighScores)
         {
             Util.TypeEffect($"{PlayerName} : {Point}");

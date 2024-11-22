@@ -11,5 +11,6 @@ public class Help
         Util.TypeEffect("points - points you got so far!");
         Util.TypeEffect("shop - displays the shop");
         Util.TypeEffect("buy - buys the items for your points!");
+        Util.TypeEffect("highscore - shows top 3 scores of the game");
     }
 }
