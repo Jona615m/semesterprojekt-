@@ -5,13 +5,13 @@ class World {
   public Space Haven { get; }
   
   public World () {
-    Space Haven       = new Space("haven");
+    Space Haven        = new Space("haven");
     Space Nexus        = new Space("nexus");
-    Space Hub      = new Space("hub");
-    Space Core      = new Space("core");
-    Space Farm  = new Space("farm");
-    Space Recycle    = new Space("station") { HasDrop = true} ;
-    Space Shop = new Space("shop") { HasShop = true };
+    Space Hub          = new Space("hub");
+    Space Core         = new Space("core");
+    Space Farm         = new Space("farm");
+    Space Recycle      = new Space("station") { HasDrop = true} ;
+    Space Shop         = new Space("shop") { HasShop = true };
     
     Haven.AddEdge("nexus", Nexus);
 

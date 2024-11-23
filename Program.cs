@@ -10,10 +10,12 @@ class Program
 
     public static string PlayerName = "";
     static ZuulShopGame.PlayerShop shop = new ZuulShopGame.PlayerShop();
-    static ZuulShopGame.Player player = new ZuulShopGame.Player(Point);
+    static ZuulShopGame.Player player = new ZuulShopGame.Player(0);
     static DateTime startTime = DateTime.Now; // betyder vores start tid begynder fra vores tid og så har man 5 min
     private static TimeSpan duration = TimeSpan.FromMinutes(5);
-    public static int Point { get; set; }
+    public static Quiz quiz = new Quiz();
+
+    private static bool firstRun = true;
 
     public static void Main(string[] args)
     {
@@ -22,8 +24,17 @@ class Program
         Space currentSpace = world.GetEntry(); // Set currentSpace til start lokation
 
         while (true)
-
         {
+            if(firstRun == true)
+            {
+                firstRun = false;
+            } else {
+                Console.Clear();
+            }
+
+            TimeSpan remainingTime = duration - (DateTime.Now - startTime);
+            Console.WriteLine($"\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
+
             Util.TypeEffect($"\nYou are at the {currentSpace.GetName()}.");
             currentSpace.ShowExits();
             string input = Console.ReadLine()?.ToLower();
@@ -35,9 +46,6 @@ class Program
                 Util.TypeEffect("\nTime i up!");
                 break;
             }
-
-            TimeSpan remainingTime = duration - (DateTime.Now - startTime);
-            Console.WriteLine($"\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
 
             if (inputParts.Length > 0)
             {
@@ -88,6 +96,7 @@ class Program
                 {
                     string itemName = input.Substring("drop".Length).Trim(); 
                     bool success = Inventory.RemoveItem(itemName);
+                    quiz.Start(itemName);
                 }
                 else if (command == "shop")
                     if (currentSpace.HasShop)
