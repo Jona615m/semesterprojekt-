@@ -9,29 +9,31 @@ public class Quiz
     public QuizAB metalQuiz = new Metal();
     public QuizAB glassQuiz = new Glas();
 
-    public void Start(string trashName) {
+    public bool Start(string trashName)
+    {
 
-        switch (trashName.ToLower()) {
+        switch (trashName.ToLower())
+        {
             case "cigaret":
-                cigaretQuiz.StartQuiz();
+                return cigaretQuiz.StartQuiz();
                 break;
             case "paper":
                 //Not made yet
                 break;
             case "plastic":
-                plastikQuiz.StartQuiz();
+                return plastikQuiz.StartQuiz();
                 break;
             case "electronic":
-                elektronikQuiz.StartQuiz();
+                return elektronikQuiz.StartQuiz();
                 break;
             case "snus":
                 //Not made yet
                 break;
             case "metal":
-                metalQuiz.StartQuiz();
+                return metalQuiz.StartQuiz();
                 break;
             case "glass":
-                glassQuiz.StartQuiz();
+                return glassQuiz.StartQuiz();
                 break;
             case "cardboard":
                 //Not made yet
@@ -39,6 +41,7 @@ public class Quiz
             default:
                 throw new NotImplementedException();
         }
-
-    }
+        throw new NotImplementedException();
+    } 
+    
 }

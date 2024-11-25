@@ -31,9 +31,9 @@ public class ZuulShopGame
             // Her laver jeg listen af forskellige ting i shoppen
             ItemsForSale = new Dictionary<string, ShopItem>
             {
-                { "", new ShopItem("", ".", 50) },
-                { "spawnrate", new ShopItem("Spawnrate", "Higher spawnrate for trash.", 100) },
-                { "door", new ShopItem("Door", "Unlocks a new room", 150) }
+                { "", new ShopItem("", ".", 850) },
+                { "spawnrate", new ShopItem("Spawnrate", "Higher spawnrate for trash.", 1000) },
+                { "door", new ShopItem("Door", "Unlocks a new room", 1050) }
             };
         }
 

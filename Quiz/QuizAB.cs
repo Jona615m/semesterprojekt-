@@ -8,7 +8,7 @@ public abstract class QuizAB
 
         private static readonly Random RandomGenerator = new Random(); // Shared random generator
 
-        public string StartQuiz()
+        public bool StartQuiz()
         {
             // Randomly select a question
             int questionIndex = RandomGenerator.Next(Questions.Length);
@@ -30,20 +30,20 @@ public abstract class QuizAB
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("That's the correct answer!");
                 Console.ResetColor();
-                ZuulShopGame.Player.player.Point += 100;
-
+                /*ZuulShopGame.Player.Point += 100;*/
+                return true;
             }
+            
+            
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
                     $"Bummer, wrong answer! The correct answer was: {Options[questionIndex, CorrectAnswers[questionIndex]]}");
                 Console.ResetColor();
-                player.Point -= 100;
-
+                /*player.Point -= 100;*/
+                return false;
             }
-
-            return "Quiz ended.";
         }
         
 }

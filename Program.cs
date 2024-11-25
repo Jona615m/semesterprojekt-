@@ -25,12 +25,12 @@ class Program
 
         while (true)
         {
-            if(firstRun == true)
+            /*if(firstRun == true)
             {
                 firstRun = false;
             } else {
                 Console.Clear();
-            }
+            }*/
 
             TimeSpan remainingTime = duration - (DateTime.Now - startTime);
             Console.WriteLine($"\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
@@ -96,7 +96,15 @@ class Program
                 {
                     string itemName = input.Substring("drop".Length).Trim(); 
                     bool success = Inventory.RemoveItem(itemName);
-                    quiz.Start(itemName);
+                    bool correct = quiz.Start(itemName);
+                    if (correct)
+                    {
+                        player.Point += 100;
+                    }
+                    else
+                    {
+                        player.Point -= 100;
+                    }
                 }
                 else if (command == "shop")
                     if (currentSpace.HasShop)
