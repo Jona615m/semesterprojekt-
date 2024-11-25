@@ -48,6 +48,7 @@ public class Inventory
         {
             inventory.Remove(item);
             Util.TypeEffect($"{itemName} has been removed from your inventory.");
+            
             return true;
         }
         Util.TypeEffect($"{itemName} is not in your inventory.");
@@ -69,6 +70,12 @@ public class Inventory
         {
             Util.TypeEffect("Your inventory is empty.");
         }
+    }
+    
+    //denne metode er til at få en ny "count" på vores item
+    public static int GetItemCount()
+    {
+        return inventory.Count;
     }
 
     // Checker hvis du har et specifikt item i dit inventory 

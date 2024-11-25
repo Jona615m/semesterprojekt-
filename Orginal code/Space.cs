@@ -51,12 +51,26 @@ class Space : Node
     }
   }
 
-
+  //denne metode respawner items efter inventory count er 0
+  public void ItemRespawn(int inventoryCount)
+  {
+    if (!hasItem && inventoryCount <= 0)
+    {
+      hasItem = true;
+    }
+  }
   public GameObject? PickUpObject()
   {
     if(hasItem == false) return null;
-    
     this.hasItem = false;
     return Inventory.GetRandomItem();
+  }
+  public void TryRespawnItem(int inventoryCount)
+  {
+    if (!hasItem && inventoryCount <= 0) // Respawn item when inventory is empty
+    {
+      hasItem = true;
+      Util.TypeEffect("An item has respawned in this location.");
+    }
   }
 }

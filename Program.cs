@@ -138,7 +138,8 @@ class Program
                     {
                         Util.TypeEffect("Invalid command.");
                     }
-                }
+                currentSpace.ItemRespawn(Inventory.GetItemCount());
+            }
             }
 
             Highscore.AddScore(PlayerName, player.Point);
