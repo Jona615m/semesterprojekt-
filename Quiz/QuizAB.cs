@@ -30,16 +30,20 @@ public abstract class QuizAB
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("That's the correct answer!");
                 Console.ResetColor();
-                /*Program.UpdateScore(100); // Add +100 to global score*/
+                ZuulShopGame.Player.player.Point += 100;
+
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Bummer, wrong answer! The correct answer was: {Options[questionIndex, CorrectAnswers[questionIndex]]}");
+                Console.WriteLine(
+                    $"Bummer, wrong answer! The correct answer was: {Options[questionIndex, CorrectAnswers[questionIndex]]}");
                 Console.ResetColor();
-                /*Program.Point(-100); // Subtract 100 from global score*/
+                player.Point -= 100;
+
             }
 
             return "Quiz ended.";
         }
+        
 }

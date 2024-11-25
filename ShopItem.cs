@@ -144,5 +144,7 @@ public class ZuulShopGame
                 Util.TypeEffect($"{item.Name}: {item.Description}");
             }
         }
+
+     
     }
 }
