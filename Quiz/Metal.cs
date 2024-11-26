@@ -3,13 +3,13 @@ class Metal : QuizAB
 {
     protected override string[] Questions => new string[]
     {
-        "En dåse af aluminium kan tage over 200 år at nedbrydes naturligt."
+        "Can an aluminum can take over 200 years to decompose naturally?"
     };
 
     protected override string[,] Options => new string[,]
     {
-        { "Ja", "Nej", "" }
+        { "Yes", "No", "It doesn't decompose" }
     };
 
-    protected override int[] CorrectAnswers => new int[] { 0 }; // Correct answer index
+    protected override int[] CorrectAnswers => new int[] { 0 };  //Correct answer index
 }

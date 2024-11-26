@@ -8,6 +8,7 @@ public class Quiz
     public QuizAB elektronikQuiz = new Elektronik();
     public QuizAB metalQuiz = new Metal();
     public QuizAB glassQuiz = new Glas();
+    public QuizAB snusQuiz = new Snus();
 
     public bool Start(string trashName)
     {
@@ -27,7 +28,7 @@ public class Quiz
                 return elektronikQuiz.StartQuiz();
                 break;
             case "snus":
-                //Not made yet
+                return snusQuiz.StartQuiz();
                 break;
             case "metal":
                 return metalQuiz.StartQuiz();

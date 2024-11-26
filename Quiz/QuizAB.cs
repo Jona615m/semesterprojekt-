@@ -36,7 +36,7 @@ public abstract class QuizAB
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"Bummer, wrong answer! The correct answer was: {Options[questionIndex, CorrectAnswers[questionIndex]]}");
+                    $"Wrong answer! The correct answer was: {Options[questionIndex, CorrectAnswers[questionIndex]]}");
                 Console.ResetColor();
                 return false;
             }

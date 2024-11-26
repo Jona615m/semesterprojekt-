@@ -39,7 +39,8 @@ class Program
             currentSpace.ShowExits();
             string input = Console.ReadLine()?.ToLower();
             string[] inputParts = input?.Split(' ') ?? Array.Empty<string>();
-
+            currentSpace.ItemRespawn(Inventory.GetItemCount());
+            
             if (input == "exit") break;
             if (DateTime.Now - startTime > duration)
             {
@@ -67,6 +68,7 @@ class Program
                     GameObject? obj = currentSpace.PickUpObject();
                     if (obj == null)
                     {
+                        
                         Util.TypeEffect("Theres nothing to pick up");
                     }
                     else
@@ -75,7 +77,6 @@ class Program
                         Util.TypeEffect("You picked up: " + obj.name + " and added it to your inventory.");
                         player.Point += 100;
                     }
-
                     Inventory.ShowInventory();
                 }
                 else if (command == "inventory")
@@ -114,7 +115,6 @@ class Program
                     else
                     {
                         Util.TypeEffect($"You have to find the shop");
-
                     }
                 else if (command == "buy" && inputParts.Length > 1)
                 {
@@ -138,7 +138,7 @@ class Program
                     {
                         Util.TypeEffect("Invalid command.");
                     }
-                currentSpace.ItemRespawn(Inventory.GetItemCount());
+                /*currentSpace.ItemRespawn(Inventory.GetItemCount());*/
             }
             }
 
