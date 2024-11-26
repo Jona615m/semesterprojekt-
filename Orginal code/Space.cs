@@ -5,11 +5,16 @@ class Space : Node
 {
 
   public bool hasItem = true;
-  public bool HasShop { get; set; }
-  public bool HasDrop { get; set; }
+  
   public Space (String name) : base(name)
   {
+    HasAccess = true;
   }
+
+  public bool HasShop { get; set; }
+  public bool HasDrop { get; set; }
+  
+  public bool HasAccess { get; set; }
   
 //indikerer vi har en shop et sted 
   public void Welcome () {

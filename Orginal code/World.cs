@@ -13,6 +13,7 @@ class World {
     Space Recycle      = new Space("station") { HasDrop = true} ;
     Space Shop         = new Space("shop") { HasShop = true };
     
+    
     Haven.AddEdge("nexus", Nexus);
 
     Nexus.AddEdge("hub", Hub);

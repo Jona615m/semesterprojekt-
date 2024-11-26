@@ -31,9 +31,10 @@ public class ZuulShopGame
             // Her laver jeg listen af forskellige ting i shoppen
             ItemsForSale = new Dictionary<string, ShopItem>
             {
-                { "", new ShopItem("", ".", 850) },
+                { "trash pickup", new ShopItem("?", "?", 850) },
                 { "spawnrate", new ShopItem("Spawnrate", "Higher spawnrate for trash.", 1000) },
-                { "door", new ShopItem("Door", "Unlocks a new room", 1050) }
+                { "room 1 key", new ShopItem("room 1", "Unlocks a new room (1)", 1050) },
+                { "room 2 key", new ShopItem("room 2", "Unlocks a new room (2)", 1050) },
             };
         }
 
@@ -51,49 +52,42 @@ public class ZuulShopGame
         public  bool BuyItem(string itemName, Player player)
         {
             // Tjekker om genstanden findes i butikken
-            if (ItemsForSale.ContainsKey(itemName))
-            {
-                ShopItem item = ItemsForSale[itemName];
-                // Tjekker om spilleren har nok point til at købe genstanden
-                if (player.Point >= item.Price)
+                // Tjekker om genstanden findes i butikken
+                if (ItemsForSale.ContainsKey(itemName))
                 {
-                    player.AddItem(item); // Tilføjer genstanden til spillerens inventar
-                    player.Point -= item.Price; // Trækker prisen fra spillerens point
-                    Util.TypeEffect($"You bought a {item.Name} for {item.Price} points.");
-                    return true;
+                    ShopItem item = ItemsForSale[itemName];
+                    // Tjekker om spilleren har nok point til at købe genstanden
+                    if (player.Point >= item.Price)
+                    {
+                        player.AddItem(item); // Tilføjer genstanden til spillerens inventar
+                        player.Point -= item.Price; // Trækker prisen fra spillerens point
+
+                        if (itemName == "room 1 key")
+                        {
+                            Room1.HasAcces = true;
+                            Util.TypeEffect("Room 1 unlocked");
+                        }
+                        else if (itemName == "room 2 key")
+                        {
+                            Room2.HasAcces = true;
+                            Util.TypeEffect("Room 2 unlocked");
+                        }
+                        
+                        Util.TypeEffect($"You bought a {item.Name} for {item.Price} points.");
+                        return true;
+                    }
+                    else
+                    {
+                        Util.TypeEffect("You don't have enough points!");
+                    }
                 }
                 else
                 {
-                    Util.TypeEffect("You don't have enough points!");
+                    Util.TypeEffect("That item is not available.");
                 }
-            }
-            else
-            {
-               Util.TypeEffect("That item is not available.");
-            }
 
-            return false;
+                return false;
         }
-
-        /*
-        // Metode til at sælge en genstand fra spillerens inventar
-        public bool SellItem(string itemName, Player player)
-        {
-            ShopItem item = player.RemoveItem(itemName); // Fjerner genstanden fra inventaret
-            if (item != null)
-            {
-                int sellPrice = item.Price / 2; // Sælger genstanden for halv pris
-                player.Point += sellPrice; // Tilføjer salgsprisen til spillerens point
-                Console.WriteLine($"You sold your {item.Name} for {sellPrice} points.");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("You don't have that item to sell.");
-            }
-
-            return false;
-        }*/
     }
 
     // Klassen Player repræsenterer spilleren, som kan have point og et inventar
@@ -115,20 +109,6 @@ public class ZuulShopGame
             Inventory[item.Name.ToLower()] = item;
             Console.WriteLine($"You added {item.Name} to your inventory.");
         }
-
-        // Metode til at fjerne en genstand fra inventaret og returnere den, hvis den findes
-        /*public ShopItem RemoveItem(string itemName)
-        {
-            if (Inventory.ContainsKey(itemName))
-            {
-                ShopItem item = Inventory[itemName];
-                Inventory.Remove(itemName);
-                return item;
-            }
-
-            return null;
-        }*/
-
         // Metode til at vise alle genstande i spillerens inventar
         public void DisplayInventory()
         {

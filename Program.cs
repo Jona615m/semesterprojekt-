@@ -57,10 +57,17 @@ class Program
                     string direction = inputParts[1];
                     Space? nextSpace = currentSpace.FollowEdge(direction); // Follow edge til den næste "space"
                     if (nextSpace != null)
-                    {
-                        currentSpace = nextSpace; // Opdaterer din lokation nu
-                        Util.TypeEffect($"You moved to {currentSpace.GetName()}.");
-                    }
+                    
+                        if (nextSpace.HasAccess || direction != "room 1" && direction != "room 2")
+                    
+                        {
+                            currentSpace = nextSpace; // Opdaterer din lokation nu
+                        }
+                    
+                        else
+                        {
+                            Util.TypeEffect("This room is locked. You need a key to enter.");
+                        }
                 }
                 else if (command == "pick" && inputParts.Length >= 2 && inputParts[1] == "up")
                 {
@@ -93,19 +100,23 @@ class Program
                     Util.TypeEffect($"Your total score is {player.Point} points.");
                 }
                 else if (command == "drop")
-                    if (currentSpace.HasDrop)
+                    
                 {
-                    string itemName = input.Substring("drop".Length).Trim(); 
-                    bool success = Inventory.RemoveItem(itemName);
-                    bool correct = quiz.Start(itemName);
-                    if (correct)
+                    if (currentSpace.HasDrop)
                     {
-                        player.Point += 100;
+                        string itemName = input.Substring("drop".Length).Trim(); 
+                        bool success = Inventory.RemoveItem(itemName);
+                        bool correct = quiz.Start(itemName);
+                        if (correct)
+                        {
+                            player.Point += 100;
+                        }
+                        else
+                        {
+                            player.Point -= 100;
+                        }                        
                     }
-                    else
-                    {
-                        player.Point -= 100;
-                    }
+
                 }
                 else if (command == "shop")
                     if (currentSpace.HasShop)
