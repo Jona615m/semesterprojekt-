@@ -1,7 +1,18 @@
 /* Worldclass for modeling the entire in-game world
  */
 
+using temp;
+
 class World {
+  public bool IsRoom1Unlocked()
+  {
+    return Room1.HasAccess;
+  }
+
+  public bool IsRoom2Unlocked()
+  {
+    return Room2.HasAccess;
+  }
   public Space Haven { get; }
   public Space Room1 { get;}
   public Space Room2 { get; }
@@ -41,6 +52,7 @@ class World {
 
     Recycle.AddEdge("hub", Hub);
     Recycle.AddEdge("shop", Shop);
+    Recycle.AddEdge("room2", Room2);
     
     Shop.AddEdge("core", Core);
     Shop.AddEdge("station", Recycle);
@@ -52,9 +64,6 @@ class World {
   public Space GetEntry () {
     return Haven;
   }
-
-
-  
   //Her har vi lavet en metode med switch case, som gør at når vi køber et rum,
   //så searcher den igennem for at se om vi har unlocked vores rum
   public void UnlockRoom(string roomName)
@@ -76,4 +85,5 @@ class World {
 
     Util.TypeEffect($"Unlocked: {roomName}");
   }
+  
 }

@@ -17,12 +17,37 @@ class Program
 
     private static bool firstRun = true;
 
+    //Her går den ind og læser map klassen og også vores world class
+    public static string GetCurrentMap(World world)
+    {
+        bool room1Unlocked = world.Room1.HasAccess;
+        bool room2Unlocked = world.Room2.HasAccess;
+
+        if (room1Unlocked && room2Unlocked)
+        {
+            return Map.BothRoomsUnlockedMap; //
+        }
+        else if (room1Unlocked)
+        {
+            return Map.Room1UnlockedMap;
+        }
+        else if (room2Unlocked)
+        {
+            return Map.Room2UnlockedMap;
+        }
+        else
+        {
+            return Map.DefaultMap;
+        }
+    }
     public static void Main(string[] args)
     {
         WelcomeUser();
         World world = new World();
         Space currentSpace = world.GetEntry(); // Set currentSpace til start lokation
-
+        
+        
+        
         while (true)
         {
             /*if(firstRun == true)
@@ -159,7 +184,10 @@ class Program
                 else if (command == "map")
 
                 {
-                 Util.TypeEffect(Map.AsciiMap());   
+                    string currentMap = GetCurrentMap(world);
+                    Console.WriteLine(currentMap);
+                    Util.TypeEffect("Press enter to continue.");
+                    Console.ReadLine();
                 }
                     else
                     {
