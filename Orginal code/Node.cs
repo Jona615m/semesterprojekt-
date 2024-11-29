@@ -9,7 +9,7 @@ class Node {
   public Node (string name) {
     this.name = name;
   }
-  
+
   public String GetName () {
     return name;
   }

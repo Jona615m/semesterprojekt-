@@ -2,14 +2,14 @@ public class Inventory
 {
     private static List<GameObject> PossibleItems = new List<GameObject>()
     {
-        new GameObject("Cigaret", "x"),
-        new GameObject("Paper", "x"),
-        new GameObject("Plastic", "x"),
-        new GameObject("Electronic", "x"),
-        new GameObject("Snus", "x"),
-        new GameObject("Metal", "x"),
-        new GameObject("Glass", "x"),
-        new GameObject("Cardboard", "x"),
+        new GameObject("Cigaret", ""),
+        new GameObject("Paper", ""),
+        new GameObject("Plastic", ""),
+        new GameObject("Electronic", ""),
+        new GameObject("Snus", ""),
+        new GameObject("Metal", ""),
+        new GameObject("Glass", ""),
+        new GameObject("Cardboard", ""),
         
     };
     

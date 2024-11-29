@@ -32,9 +32,9 @@ public class ZuulShopGame
             ItemsForSale = new Dictionary<string, ShopItem>
             {
                 { "trash pickup", new ShopItem("?", "?", 850) },
-                { "spawnrate", new ShopItem("Spawnrate", "Higher spawnrate for trash.", 1000) },
-                { "room 1 key", new ShopItem("room 1", "Unlocks a new room (1)", 1050) },
-                { "room 2 key", new ShopItem("room 2", "Unlocks a new room (2)", 1050) },
+                { "spawnrate", new ShopItem("Spawnrate", "Higher spawnrate for trash.", 100) },
+                { "room1", new ShopItem("room1", "Unlocks a new room (1)", 100) },
+                { "room2", new ShopItem("room2", "Unlocks a new room (2)", 105) },
             };
         }
 
@@ -49,7 +49,7 @@ public class ZuulShopGame
         }
 
         // Metode til at købe en genstand, hvis spilleren har nok point
-        public  bool BuyItem(string itemName, Player player)
+        public bool BuyItem(string itemName, Player player)
         {
             // Tjekker om genstanden findes i butikken
                 // Tjekker om genstanden findes i butikken
@@ -62,15 +62,13 @@ public class ZuulShopGame
                         player.AddItem(item); // Tilføjer genstanden til spillerens inventar
                         player.Point -= item.Price; // Trækker prisen fra spillerens point
 
-                        if (itemName == "room 1 key")
+                        if (itemName == "room1")
                         {
-                            Room1.HasAcces = true;
-                            Util.TypeEffect("Room 1 unlocked");
+                            return true;
                         }
                         else if (itemName == "room 2 key")
                         {
-                            Room2.HasAcces = true;
-                            Util.TypeEffect("Room 2 unlocked");
+                            return true;
                         }
                         
                         Util.TypeEffect($"You bought a {item.Name} for {item.Price} points.");

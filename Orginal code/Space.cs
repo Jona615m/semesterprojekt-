@@ -9,8 +9,10 @@ class Space : Node
   public Space (String name) : base(name)
   {
     HasAccess = true;
+    IsVisble = true;
   }
-
+  
+  public bool IsVisble { get; set; }
   public bool HasShop { get; set; }
   public bool HasDrop { get; set; }
   

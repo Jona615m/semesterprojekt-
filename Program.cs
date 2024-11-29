@@ -133,7 +133,12 @@ class Program
                     Util.TypeEffect($"Attempting to buy: {itemName}");
                     if (currentSpace.HasShop)
                     {
-                        shop.BuyItem(itemName, player);
+                        bool bought = shop.BuyItem(itemName, player);
+
+                        if (bought)
+                        {
+                            world.UnlockRoom(itemName);
+                        }
                     }
                     else
                     {
@@ -144,6 +149,12 @@ class Program
                 else if (command == "highscore")
                 {
                     Highscore.DisplayHighscores();
+                }
+                
+                else if (command == "map")
+
+                {
+                 Util.TypeEffect(Map.AsciiMap());   
                 }
                     else
                     {
