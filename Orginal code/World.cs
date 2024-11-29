@@ -26,7 +26,12 @@ class World {
     Hub.AddEdge("playground", Farm);
     Hub.AddEdge("station", Recycle);
     Hub.AddEdge("room1", Room1);
-    Hub.AddEdge("room2", Room2);
+    
+    Room1.AddEdge("room2", Room2);
+    Room1.AddEdge("hub", Hub);
+    
+    Room2.AddEdge("room1", Room1);
+    Room2.AddEdge("station", Recycle);
 
     Core.AddEdge("hub", Hub);
     Core.AddEdge("shop", Shop);
@@ -49,21 +54,26 @@ class World {
   }
 
 
+  
+  //Her har vi lavet en metode med switch case, som gør at når vi køber et rum,
+  //så searcher den igennem for at se om vi har unlocked vores rum
   public void UnlockRoom(string roomName)
   {
     switch (roomName)
     {
       case "room1":
         Room1.HasAccess = true;
+        Room1.IsVisble = true;
         break;
       case "room2":
         Room2.HasAccess = true;
+        Room2.IsVisble = true;
         break;
       default:
+        Util.TypeEffect("no room with that name to unlock.");
         return;
     }
-    Util.TypeEffect("Unlocked: " + roomName);
 
+    Util.TypeEffect($"Unlocked: {roomName}");
   }
-
 }

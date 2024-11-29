@@ -62,15 +62,12 @@ public class ZuulShopGame
                         player.AddItem(item); // Tilføjer genstanden til spillerens inventar
                         player.Point -= item.Price; // Trækker prisen fra spillerens point
 
-                        if (itemName == "room1")
+                        //Her har vi gjort at vi kan købe rummene og så returnerer den true
+                        if (itemName == "room1" || itemName == "room2")
                         {
                             return true;
                         }
-                        else if (itemName == "room 2 key")
-                        {
-                            return true;
-                        }
-                        
+            
                         Util.TypeEffect($"You bought a {item.Name} for {item.Price} points.");
                         return true;
                     }

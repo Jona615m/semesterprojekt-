@@ -10,6 +10,8 @@ class Node {
     this.name = name;
   }
 
+  public bool HasAccess { get; set; }
+
   public String GetName () {
     return name;
   }

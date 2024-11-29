@@ -58,15 +58,20 @@ class Program
                     Space? nextSpace = currentSpace.FollowEdge(direction); // Follow edge til den næste "space"
                     if (nextSpace != null)
                     
-                        if (nextSpace.HasAccess || direction != "room 1" && direction != "room 2")
-                    
+                        if (nextSpace != null)
                         {
-                            currentSpace = nextSpace; // Opdaterer din lokation nu
+                            if (nextSpace.CanAccess())
+                            {
+                                currentSpace = nextSpace; // opdaterer lokationen
+                            }
+                            else
+                            {
+                                Util.TypeEffect("This room is locked. You need to unlock it in the shop first.");
+                            }
                         }
-                    
                         else
                         {
-                            Util.TypeEffect("This room is locked. You need a key to enter.");
+                            Util.TypeEffect("You can't go that way.");
                         }
                 }
                 else if (command == "pick" && inputParts.Length >= 2 && inputParts[1] == "up")
@@ -134,16 +139,16 @@ class Program
                     if (currentSpace.HasShop)
                     {
                         bool bought = shop.BuyItem(itemName, player);
-
                         if (bought)
                         {
-                            world.UnlockRoom(itemName);
+                            world.UnlockRoom(itemName); // Gør så vi unlocker vores købe room
                         }
                     }
                     else
                     {
-                        Util.TypeEffect($"You have to find the shop, before you can buy items");
+                        Util.TypeEffect("You need to be in a shop to buy items.");
                     }
+                
                     //forsøger at købe items
                 }
                 else if (command == "highscore")

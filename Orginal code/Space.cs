@@ -8,6 +8,7 @@ class Space : Node
   
   public Space (String name) : base(name)
   {
+    
     HasAccess = true;
     IsVisble = true;
   }
@@ -39,7 +40,8 @@ class Space : Node
     // Util.TypeEffect("Goodbye! See you next time!");
   }
   
-  public override Space FollowEdge (string direction) {
+  public override Space FollowEdge (string direction) 
+  {
     return (Space) (base.FollowEdge(direction));
   }
   //Follow edge kalder super klassens metode - kalder den inde i "Node" klassen
@@ -50,10 +52,14 @@ class Space : Node
     HashSet<string> exits = edges.Keys.ToHashSet();
 
     Util.TypeEffect($"\n{Program.PlayerName}, You can now go to the following route:");
-        
+
     foreach (string exit in exits)
     {
-      Util.TypeEffect(" - " + exit); // Effekt og skriver vores "paths" langsommere 
+      Node nextNode = edges[exit];
+      if (nextNode is Space nextSpace && nextSpace.IsVisble)
+      {
+        Util.TypeEffect(" - " + exit); // Display only visible exits
+      }
     }
   }
 
@@ -78,5 +84,11 @@ class Space : Node
       hasItem = true;
       Util.TypeEffect("An item has respawned in this location.");
     }
+  }
+  
+  //CanAccess metoeden gør vi kan kalde den i main og gør vi returnerer HasAccess
+  public bool CanAccess()
+  {
+    return HasAccess;
   }
 }
