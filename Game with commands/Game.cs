@@ -83,6 +83,9 @@ public class Game
                 case "map":
                     DisplayMap();
                     break;
+                case "music":
+                    HandleMusicCommand();
+                    break;
                 default:
                     Util.TypeEffect("Invalid command.");
                     break;
@@ -163,6 +166,18 @@ public class Game
             else
             {
                 Util.TypeEffect("You need to be in a shop to buy items.");
+            }
+        }
+
+        private void HandleMusicCommand()
+        {
+            try
+            {
+                temp.Easteregg.Easteregg.Music();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("WHOMP WHOMP"); 
             }
         }
 

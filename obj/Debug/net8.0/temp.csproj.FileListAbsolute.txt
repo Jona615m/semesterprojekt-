@@ -13,3 +13,11 @@
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.genruntimeconfig.cache
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/ref/temp.dll
 /Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.sourcelink.json
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.Asio.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.Core.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.Midi.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.Wasapi.dll
+/Users/jonasolesen/Desktop/woz/bin/Debug/net8.0/NAudio.WinMM.dll
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.csproj.AssemblyReference.cache
+/Users/jonasolesen/Desktop/woz/obj/Debug/net8.0/temp.csproj.Up2Date
