@@ -18,9 +18,6 @@ public class Quiz
             case "cigaret":
                 return cigaretQuiz.StartQuiz();
                 break;
-            case "paper":
-                //Not made yet
-                break;
             case "plastic":
                 return plastikQuiz.StartQuiz();
                 break;
@@ -35,9 +32,6 @@ public class Quiz
                 break;
             case "glass":
                 return glassQuiz.StartQuiz();
-                break;
-            case "cardboard":
-                //Not made yet
                 break;
             default:
                 throw new NotImplementedException();

@@ -18,7 +18,7 @@ public class Easteregg
                 return;
             }
 
-            Console.WriteLine("Playing music using afplay...");
+            Console.WriteLine("You just got RICK ROLLED");
 
             // Use afplay to play the file
             var process = new Process

@@ -2,6 +2,7 @@ namespace temp;
 
 public class Map
 {
+    //@ holder formatering på print
     public static string DefaultMap = @"
                +---------+
                |  Haven  |

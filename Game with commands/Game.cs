@@ -132,10 +132,40 @@ public class Game
         {
             if (currentSpace.HasDrop)
             {
+                Util.TypeEffect("Enter the item name to drop:");
                 string itemName = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrEmpty(itemName))
+                {
+                    Console.WriteLine("You do not have this item, try again");
+                    return;
+                }
+
+                // Try to remove the item from the inventory
                 bool success = Inventory.RemoveItem(itemName);
-                bool correct = quiz.Start(itemName);
-                player.Point += correct ? 100 : -100;
+
+                if (!success)
+                {
+                    Console.WriteLine($"{itemName} could not be dropped because it is not in your inventory.");
+                    return;
+                }
+
+                try
+                {
+                    // Start the quiz for the dropped item
+                    bool correct = quiz.Start(itemName);
+                    player.Point += correct ? 100 : -100;
+
+                    Util.TypeEffect(correct ? "Correct! you just got 100 points." : "Incorrect! You lost 100 points.");
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                Util.TypeEffect("find the recycler before dropping items");
             }
         }
 

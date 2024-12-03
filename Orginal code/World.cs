@@ -25,8 +25,8 @@ class World {
     Space Farm         = new Space("farm");
     Space Recycle      = new Space("station") { HasDrop = true} ;
     Space Shop         = new Space("shop") { HasShop = true };
-    Room1        = new Space("room1") {HasAccess = false, IsVisble = false};
-    Room2        = new Space("room2") { HasAccess = false, IsVisble = false};
+    Room1        = new Space("vault") {HasAccess = false, IsVisble = false};
+    Room2        = new Space("sanctum") { HasAccess = false, IsVisble = false};
     
     Haven.AddEdge("nexus", Nexus);
 
@@ -34,25 +34,24 @@ class World {
     //path.AddObject();
     
     Hub.AddEdge("core", Core);
-    Hub.AddEdge("playground", Farm);
+    Hub.AddEdge("farm", Farm);
     Hub.AddEdge("station", Recycle);
-    Hub.AddEdge("room1", Room1);
+    Hub.AddEdge("vault", Room1);
     
-    Room1.AddEdge("room2", Room2);
+    Room1.AddEdge("sanctum", Room2);
     Room1.AddEdge("hub", Hub);
     
-    Room2.AddEdge("room1", Room1);
+    Room2.AddEdge("vault", Room1);
     Room2.AddEdge("station", Recycle);
 
     Core.AddEdge("hub", Hub);
     Core.AddEdge("shop", Shop);
-    //forest.AddObject();
     
     Farm.AddEdge("hub", Hub);
 
     Recycle.AddEdge("hub", Hub);
     Recycle.AddEdge("shop", Shop);
-    Recycle.AddEdge("room2", Room2);
+    Recycle.AddEdge("sanctum", Room2);
     
     Shop.AddEdge("core", Core);
     Shop.AddEdge("station", Recycle);

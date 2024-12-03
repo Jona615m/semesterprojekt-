@@ -3,13 +3,11 @@ public class Inventory
     private static List<GameObject> PossibleItems = new List<GameObject>()
     {
         new GameObject("Cigaret", ""),
-        new GameObject("Paper", ""),
         new GameObject("Plastic", ""),
         new GameObject("Electronic", ""),
         new GameObject("Snus", ""),
         new GameObject("Metal", ""),
         new GameObject("Glass", ""),
-        new GameObject("Cardboard", ""),
         
     };
     
