@@ -7,11 +7,11 @@ public class Easteregg
 {
     public static void Music()
     {
-        // finder filerne igennem domænet woz/bin/debugg/net8/easteregg
+        // Construct the relative path
         string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Easteregg", "rickroll.mp3");
         try
         {
-            // Checker om filen findes
+            // Check if file exists
             if (!System.IO.File.Exists(filePath))
             {
                 Console.WriteLine($"File not found at: {filePath}");
@@ -20,13 +20,13 @@ public class Easteregg
 
             Console.WriteLine("You just got RICK ROLLED");
 
-            //bruger afplay til at spille filen
+            // Use afplay to play the file
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "afplay",       // macOS command til afspilning af audio
-                    Arguments = $"\"{filePath}\"", // Filen til at afspille
+                    FileName = "afplay",       // macOS command to play audio
+                    Arguments = $"\"{filePath}\"", // File to play
                     RedirectStandardOutput = false,
                     RedirectStandardError = false,
                     UseShellExecute = false
@@ -34,7 +34,7 @@ public class Easteregg
             };
 
             process.Start();
-            process.WaitForExit(); //gør filen skal spille færdig før spilleren kan forsætte
+            process.WaitForExit(); // Wait for the process to finish playing the file
         }
         catch (Exception e)
         {
