@@ -14,5 +14,6 @@ public class Help
         Util.TypeEffect("buy - buys the items for your points!");
         Util.TypeEffect("highscore - shows top 3 scores of the game");
         Util.TypeEffect("map - shows the original map");
+        Util.TypeEffect("drop - when you want to drop an item");
     }
 }
