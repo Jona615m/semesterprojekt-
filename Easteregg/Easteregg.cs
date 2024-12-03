@@ -1,20 +1,20 @@
 using NAudio.Wave;
 using System.Diagnostics;
 
-
 namespace temp.Easteregg;
 
 public class Easteregg
 {
     public static void Music()
     {
-        string filePath = @"/Users/jonasolesen/Desktop/woz/Easteregg/rickroll.mp3";
+        // Construct the relative path
+        string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Easteregg", "rickroll.mp3");
         try
         {
             // Check if file exists
             if (!System.IO.File.Exists(filePath))
             {
-                Console.WriteLine("File not found!");
+                Console.WriteLine($"File not found at: {filePath}");
                 return;
             }
 
