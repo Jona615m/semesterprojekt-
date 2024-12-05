@@ -1,8 +1,6 @@
 using NAudio.Wave;
 using System.Diagnostics;
-
 namespace temp.Easteregg;
-
 public class Easteregg
 {
     public static void Music()
