@@ -42,20 +42,16 @@ public abstract class QuizAB
                 Console.ResetColor();
                 return false;
             }
+            
         }
+        //Exception der leverer en fejl meddelelse hvis man skriver forkert og giver en minus point
         catch (FormatException ex)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Error: {ex.Message}");
-            Console.ResetColor();
-            return false;
-        }
-        catch (Exception ex)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Wrong answer {ex.Message}");
+            Console.WriteLine($"You can't choose that answer: {ex.Message}");
             Console.ResetColor();
             return false;
         }
     }
+
 }
