@@ -12,7 +12,7 @@ public class Easteregg
             // Checker om filen findes
             if (!System.IO.File.Exists(filePath))
             {
-                Console.WriteLine($"File not found at: {filePath}");
+                Console.WriteLine($"What is this?");
                 return;
             }
 
@@ -36,7 +36,7 @@ public class Easteregg
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error playing music: {e.Message}");
+            Console.WriteLine($"Whomp whomp");
         }
     }
 }
