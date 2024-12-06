@@ -1,4 +1,8 @@
 
+![image](https://github.com/user-attachments/assets/88423d6a-72ad-4ab6-836e-5e39898cb861)
+(ai billede)
+
+
 Spillet vi har fokuseret på at lave er et spil,
 hvor verdenen er overfyldt med skrald og menneskeheden 
 er tvunget til at gå ned i nogle shelters der hedder “EcoHabs”,
