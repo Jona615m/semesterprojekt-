@@ -23,7 +23,7 @@ public class Game
             while (true)
             {
                 TimeSpan remainingTime = duration - (DateTime.Now - startTime);
-                Console.WriteLine($"\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
+                Console.WriteLine($"\n--------------------------------------------\nTime remaining: {remainingTime.Minutes}:{remainingTime.Seconds}");
 
                 Util.TypeEffect($"\nYou are at the {currentSpace.GetName()}.");
                 currentSpace.ShowExits();
