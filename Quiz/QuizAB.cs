@@ -2,12 +2,14 @@ namespace temp;
 
 public abstract class QuizAB
 {
-        protected abstract string[] Questions { get; }
-        protected abstract string[,] Options { get; } // 2D array for flere muligheder
-        protected abstract int[] CorrectAnswers { get; } // Array til at opbevare korrekte besværelse
-        private static readonly Random RandomGenerator = new Random(); // random generator
+    protected abstract string[] Questions { get; }
+    protected abstract string[,] Options { get; } // 2D array for flere muligheder
+    protected abstract int[] CorrectAnswers { get; } // Array til at opbevare korrekte besværelse
+    private static readonly Random RandomGenerator = new Random(); // random generator
 
-        public bool StartQuiz()
+    public bool StartQuiz()
+    {
+        try
         {
             //vælger tilfældig spørgsmål
             int questionIndex = RandomGenerator.Next(Questions.Length);
@@ -30,8 +32,8 @@ public abstract class QuizAB
                 Console.ResetColor();
                 return true;
             }
-            
-            
+
+
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -41,5 +43,19 @@ public abstract class QuizAB
                 return false;
             }
         }
-        
+        catch (FormatException ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Error: {ex.Message}");
+            Console.ResetColor();
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Wrong answer {ex.Message}");
+            Console.ResetColor();
+            return false;
+        }
+    }
 }
